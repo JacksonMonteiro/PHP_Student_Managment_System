@@ -10,45 +10,45 @@ class Admin {
 
 	// Getters
 
-	function getUsername() {
+	public function getUsername() {
 		return $this->username;
 	}
 
-	function getEmail() {
+	public function getEmail() {
 		return $this->email;
 	}
 
-	function getGender() {
+	public function getGender() {
 		return $this->gender;
 	}
 
-	function getRole() {
+	public function getRole() {
 		return $this->role;
 	}
 
-	function getPassword() {
+	public function getPassword() {
 		return $this->password;
 	}
 
 	// Setters
 
-	function setUsername($usr) {
+	public function setUsername($usr) {
 		$this->username = $usr;
 	}
 
-	function setEmail($e) {
+	public function setEmail($e) {
 		$this->email = $e;
 	}
 
-	function setGender($g) {
+	public function setGender($g) {
 		$this->gender = $g;
 	}
 
-	function setRole($r) {
+	public function setRole($r) {
 		$this->role = $r;
 	}
 
-	function setPassword($p) {
+	public function setPassword($p) {
 		$this->password = $p;
 	}
 }

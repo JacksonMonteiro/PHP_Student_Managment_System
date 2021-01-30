@@ -1,8 +1,8 @@
 <?php
 
 // Class used to initializes the connections on database 
-
 class Connection {
+
 	//Attributes
 	private $usr;
 	private $pwd;

@@ -5,10 +5,10 @@
 </head>
 <body>
 	<main>
-		<form action="#">
-			<label for="username">
-				Nome de usuário: <br>
-				<input type="text" id="username" name="usr" />
+		<form action="../controller/handlers/login.php" method="POST">
+			<label for="email">
+				Email: <br>
+				<input type="text" id="email" name="eml" />
 			</label> <br>
 			<label for="password">
 				Senha: <br>

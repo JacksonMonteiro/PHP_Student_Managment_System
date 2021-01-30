@@ -6,10 +6,10 @@ require_once('../../model/Admin.class.php');
 
 class AdminControl {
 	// Create register on database
-	function create($obj) {
+	public function create($obj) {
 		try {
 			$connection = new Connection("../database/config.ini");
-			$query = "INSERT INTO admin VALUES (:u, :e, :g, :r, sha1(:p))";
+			$query = "INSERT INTO admin VALUES (:u, :e, :g, :r, :p)";
 			$command = $connection->getPDO()->prepare($query);
 
 			$usr = $obj->getUsername();
@@ -22,7 +22,7 @@ class AdminControl {
 			$command->bindParam("e", $eml);
 			$command->bindParam("g", $gnd);
 			$command->bindParam("r", $rl);
-			$command->bindParam("p", $pwd);
+			$command->bindValue("p", sha1($pwd));
 
 
 			if ($command->execute()) {
@@ -37,6 +37,25 @@ class AdminControl {
 			echo "Error: {$e->getMessage()}";
 		}
 	}
+
+	public function login($email, $pass) {
+		$connection = new Connection("../database/config.ini");
+		$query = "SELECT * FROM `admin` WHERE email = ':email' AND password = ':pass';";
+		$command = $connection->getPDO()->prepare($query);
+
+		$e = $email;
+		$p = sha1($pass);
+
+		$command->bindParam("email", $e);
+		$command->bindParam("pass", $p);
+		$command->execute();
+
+		if ($command->rowCount() != 0) {
+			return false;
+		} else {
+			return true;
+		}
+ 	}
 }
 
 ?>
