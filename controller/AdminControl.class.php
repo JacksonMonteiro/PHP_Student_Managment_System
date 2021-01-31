@@ -40,20 +40,21 @@ class AdminControl {
 
 	public function login($email, $pass) {
 		$connection = new Connection("../database/config.ini");
-		$query = "SELECT * FROM `admin` WHERE email = ':email' AND password = ':pass';";
-		$command = $connection->getPDO()->prepare($query);
+		$command = $connection->getPDO()->prepare("SELECT * FROM admin WHERE email = :email AND password = :pass");
 
 		$e = $email;
 		$p = sha1($pass);
 
 		$command->bindParam("email", $e);
 		$command->bindParam("pass", $p);
-		$command->execute();
-
-		if ($command->rowCount() != 0) {
-			return false;
+		
+		if ($command->execute()) {
+			$data = $command->fetch();
+			if ($e === $data["email"] && $p === $data["password"]) {
+				return true;
+			}
 		} else {
-			return true;
+			return false;
 		}
  	}
 }
