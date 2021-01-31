@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./css/dashboard.css">
+	<title>Dashboard</title>
 </head>
 <body>
-	<h1>dashboard</h1>
+	<nav>
+		<ul>
+			<li><a href="login_form.php" class="logout-btn">Logout</a></li>
+		</ul>
+	</nav>
 
-	<a href="../">Sair</a>
+	<h1>dashboard</h1>
 </body>	
 </html>

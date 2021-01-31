@@ -13,7 +13,7 @@ $admin->setPassword($_POST["nPwd"]);
 $control = new AdminControl();
 
 if ($control->create($admin)) {
-	header ("Location: http://localhost/PHP_Student_Managment_System/view/dashboard.php");
+	header ("Location: http://localhost/PHP_Student_Managment_System/view/login_form.php");
 } else {
 	echo "<h2>Error</h2>";
 }

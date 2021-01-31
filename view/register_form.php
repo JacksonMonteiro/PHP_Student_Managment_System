@@ -15,12 +15,12 @@
                   <h1>Registrar-se</h1>
 			<label for="newUsername">
 				Nome de usuário: <br>
-				<input type="text" id="newUsername" name="nUsr" required>
+				<input type="text" id="newUsername" name="nUsr" required placeholder="admin">
 			</label>
 			<br>
 			<label for="newEmail">
 				Email: <br>
-				<input type="email" id="newEmail" name="nEml" required>
+				<input type="email" id="newEmail" name="nEml" required placeholder="admin@sge.com">
 			</label>
             <br>
             <label class="gender">
@@ -41,7 +41,7 @@
             <br>
             <label for="newRole">
             	Cargo: <br>
-            	<input type="text" id="newRole" name="nRl" required>
+            	<input type="text" id="newRole" name="nRl" required placeholder="diretor">
             </label>
             <br>
             <label for="newPassword">

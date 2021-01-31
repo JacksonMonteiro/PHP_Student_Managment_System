@@ -1,0 +1,52 @@
+:root {
+	--green: #008000;
+	--white: #FFF;
+	--orange: #FFA500;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #EFEFEF;
+	font-family: "Roboto", sans-serif;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	top: 0;
+	width: 100%;
+	height: 4rem;
+	background: var(--green);
+}
+
+nav ul {
+	list-style: none;
+}
+
+nav ul li a {
+	display: inline-block;
+	padding: 0 15px;
+	margin-right: 10px;
+	height: 2.5rem;
+	display: flex;
+	align-items: center;
+	font-size: 19px;
+	background: red;
+	color: var(--white);
+	text-decoration: none;
+	border-radius: 8px;
+}
+
+a.logout-btn {
+	transition: background .4s ease-out;
+}
+
+a.logout-btn:hover {
+	transition: background .4s ease-out;
+	background: #CC0000;
+}

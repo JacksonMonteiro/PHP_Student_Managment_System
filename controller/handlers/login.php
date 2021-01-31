@@ -16,7 +16,7 @@ if (isset($_POST["eml"]) && !empty($_POST["eml"]) && isset($_POST["pwd"]) && !em
 		header("Location: http://localhost/PHP_Student_Managment_System/view/login_form.php");
 	}
 } else {
-	header("Location: http://localhost/PHP_Student_Managment_System/");
+	header("Location: http://localhost/PHP_Student_Managment_System/view/login_form.php");
 }
 
 ?>

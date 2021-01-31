@@ -15,7 +15,7 @@
 			<h1>Login</h1>
 			<label for="email">
 				Email: <br>
-				<input type="text" id="email" name="eml" />
+				<input type="text" id="email" name="eml" placeholder="email@sge.com" />
 			</label> <br>
 			<label for="password">
 				Senha: <br>
