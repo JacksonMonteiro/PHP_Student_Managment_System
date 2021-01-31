@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="./css/register.css"/>
+	<title>Registrar-se</title>
 </head>
 <body>
+      <div class="orange_vector"></div>
+      <div class="white_vector"></div>
+      <div class="green_vector"></div>
+
 	<main>
 		<form action="../controller/handlers/create_admin.php" method="POST">
+                  <h1>Registrar-se</h1>
 			<label for="newUsername">
 				Nome de usuário: <br>
 				<input type="text" id="newUsername" name="nUsr" required>
@@ -16,8 +23,11 @@
 				<input type="email" id="newEmail" name="nEml" required>
 			</label>
             <br>
+            <label class="gender">
+                  Sexo:
+            </label>
             <div>
-            	Sexo:
+                  <br>
             	<label for="male">
             		<input type="radio" name="gender" id="male" value="M"> Masculino
             	</label>
@@ -44,8 +54,10 @@
             	<input type="password" id="rePassword" name="rPwd"/>
             </label>
             <br>
-            <input type="submit" value="Registrar-se">
-            <a href="login_form.php">Voltar</a>
+            <div class="flex">
+                  <input type="submit" value="Registrar-se" class="register-btn">
+                  <a href="login_form.php" class="back-btn">Voltar</a>
+            </div>
 		</form>
 	</main>
 </body>
