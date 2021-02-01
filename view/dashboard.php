@@ -11,7 +11,5 @@
 			<li><a href="login_form.php" class="logout-btn">Logout</a></li>
 		</ul>
 	</nav>
-
-	<h1>dashboard</h1>
 </body>	
 </html>

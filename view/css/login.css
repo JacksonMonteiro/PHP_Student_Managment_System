@@ -93,6 +93,7 @@ form input[type="password"] {
 	border-radius: 21px;
 	font-size: 18px;
 	border: none;
+	outline: none;
 	font-weight: 700;
 	transition: background .4s ease-out, color .4s ease-out, border .4s ease-out;
 }
@@ -124,6 +125,29 @@ form input[type="password"] {
 
 .register-btn:hover {
 	background: var(--orange);
+	color: var(--white);
+	transition: background .4s ease-out, color .4s ease-out;
+}
+
+.exit-btn {
+	display: inline-block;
+	text-align: center;
+	line-height: 40px;
+	margin: 18px 5% 0;
+	width: 90%;
+	height: 40px;
+	background: var(--white);
+	color: #F00;
+	text-decoration: none;
+	border-radius: 21px;
+	font-size: 18px;
+	border: 1px solid #F00;
+	font-weight: 700;
+	transition: background .4s ease-out, color .4s ease-out;
+}
+
+.exit-btn:hover {
+	background: #F00;
 	color: var(--white);
 	transition: background .4s ease-out, color .4s ease-out;
 }
