@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="./css/login.css">
+	<link rel="stylesheet" href="./view/css/login.css">
 	<title>Login</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
 	<div class="green_vector"></div>
 
 	<main>
-		<form action="../controller/handlers/login.php" method="POST">
+		<form action="login.php" method="POST">
 			<h1>Login</h1>
 			<label for="email">
 				Email: <br>

@@ -2,8 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="./css/dashboard.css">
-	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="./view/css/dashboard.css">
+	<title>SGE - Dashboard</title>
 </head>
 <body>
 	<nav>
@@ -11,5 +11,7 @@
 			<li><a href="login_form.php" class="logout-btn">Logout</a></li>
 		</ul>
 	</nav>
+
+	<a href="./moderators_view.php">Moderadores</a>
 </body>	
 </html>

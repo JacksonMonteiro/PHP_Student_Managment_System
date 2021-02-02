@@ -1,15 +1,15 @@
 <?php 
 
 // Import the Connection and the Admin model files
-require_once('database/Connection.class.php');
-require_once('../../model/Admin.class.php');
+require_once('controller/database/Connection.class.php');
+require_once('model/Admin.class.php');
 
 class AdminControl {
 	// Create register on database
 	public function create($obj) {
 		try {
-			$connection = new Connection("../database/config.ini");
-			$query = "INSERT INTO admin VALUES (:u, :e, :g, :r, :p)";
+			$connection = new Connection("./controller/database/config.ini");
+			$query = "INSERT INTO admin VALUES (:u, :e, :g, :r, :p);";
 			$command = $connection->getPDO()->prepare($query);
 
 			$usr = $obj->getUsername();
@@ -39,23 +39,46 @@ class AdminControl {
 	}
 
 	public function login($email, $pass) {
-		$connection = new Connection("../database/config.ini");
-		$command = $connection->getPDO()->prepare("SELECT * FROM admin WHERE email = :email AND password = :pass");
+		try {
+			$connection = new Connection("./controller/database/config.ini");
+			$command = $connection->getPDO()->prepare("SELECT * FROM admin WHERE email = :email AND password = :pass;");
 
-		$e = $email;
-		$p = sha1($pass);
+			$e = $email;
+			$p = sha1($pass);
 
-		$command->bindParam("email", $e);
-		$command->bindParam("pass", $p);
-		
-		if ($command->execute()) {
-			$data = $command->fetch();
-			if ($e === $data["email"] && $p === $data["password"]) {
-				return true;
+			$command->bindParam("email", $e);
+			$command->bindParam("pass", $p);
+			
+			if ($command->execute()) {
+				$data = $command->fetch();
+				if ($e === $data["email"] && $p === $data["password"]) {
+					$connection->closeConnection();
+					return true;
+				}
+			} else {
+				$connection->closeConnection();
+				return false;
 			}
-		} else {
-			return false;
+		} catch (PDOexception $e) {
+			echo "Error: {$e->getMessage()}";
 		}
+ 	}
+
+ 	public function read() {
+ 		try {
+ 			$connection = new Connection("./controller/database/config.ini");
+ 			$command = $connection->getPDO()->prepare("SELECT * FROM admin;");
+ 			if ($command->execute()) {
+ 				$data = $command->fetchAll(PDO::FETCH_CLASS, "Admin");
+ 				$connection->closeConnection();
+ 				return $data;
+ 			} else {
+ 				$connection->closeConnection();
+ 				return null;
+ 			}
+ 		} catch (PDOexception $e) {
+ 			echo "Error: ${$e->getMessage()}";
+ 		}
  	}
 }
 

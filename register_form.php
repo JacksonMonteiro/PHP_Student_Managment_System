@@ -2,7 +2,7 @@
 <html>
 <head>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="./css/register.css"/>
+      <link rel="stylesheet" href="./view/css/register.css"/>
 	<title>Registrar-se</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
       <div class="green_vector"></div>
 
 	<main>
-		<form action="../controller/handlers/create_admin.php" method="POST">
+		<form action="create_admin.php" method="POST">
                   <h1>Registrar-se</h1>
 			<label for="newUsername">
 				Nome de usuário: <br>

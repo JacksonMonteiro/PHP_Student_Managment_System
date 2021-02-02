@@ -1,7 +1,7 @@
 <?php
 
-require_once('../AdminControl.class.php');
-require_once('../../model/Admin.class.php');
+require_once('./controller/AdminControl.class.php');
+require_once('./model/Admin.class.php');
 
 $admin = new Admin();
 $admin->setUsername($_POST["nUsr"]);
@@ -13,7 +13,7 @@ $admin->setPassword($_POST["nPwd"]);
 $control = new AdminControl();
 
 if ($control->create($admin)) {
-	header ("Location: http://localhost/PHP_Student_Managment_System/view/login_form.php");
+	header ("Location: http://localhost/PHP_Student_Managment_System/login_form.php");
 } else {
 	echo "<h2>Error</h2>";
 }
