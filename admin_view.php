@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="./view/css/moderator.css" />
+	<link rel="stylesheet" type="text/css" href="./view/css/admin.css" />
 	<title>SGE - Moderadores</title>
 </head>
 <body>
@@ -31,6 +31,8 @@
 								<td>{$item->getEmail()}</td>
 								<td>{$item->getGender()}</td>
 								<td>{$item->getRole()}</td>
+								<td><a href='#'>Editar</a></td>
+								<td><a href='delete_admin_form.php'>Remover</a></td>
 							</tr>
 						";
 					}

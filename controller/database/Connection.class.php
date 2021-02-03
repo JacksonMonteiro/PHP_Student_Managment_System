@@ -12,7 +12,7 @@ class Connection {
 	private $pdo;
 
 
-	function __construct($file) {
+	public function __construct($file) {
 		try {
 			if (file_exists($file)) {
 				// initializes the configuration file

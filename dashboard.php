@@ -12,6 +12,6 @@
 		</ul>
 	</nav>
 
-	<a href="./moderators_view.php">Moderadores</a>
+	<a href="./admin_view.php">Moderadores</a>
 </body>	
 </html>

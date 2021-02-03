@@ -33,7 +33,7 @@ class AdminControl {
 				return false;
 			}
 
-		} catch (PDOexception $e) {
+		} catch (PDOException $e) {
 			echo "Error: {$e->getMessage()}";
 		}
 	}
@@ -59,7 +59,7 @@ class AdminControl {
 				$connection->closeConnection();
 				return false;
 			}
-		} catch (PDOexception $e) {
+		} catch (PDOException $e) {
 			echo "Error: {$e->getMessage()}";
 		}
  	}
@@ -76,7 +76,29 @@ class AdminControl {
  				$connection->closeConnection();
  				return null;
  			}
- 		} catch (PDOexception $e) {
+ 		} catch (PDOException $e) {
+ 			echo "Error: ${$e->getMessage()}";
+ 		}
+ 	}
+
+ 	public function delete($obj) {
+ 		try {
+ 			$connection = new Connection("./controller/database/config.ini");
+ 			$query = "DELETE FROM admin WHERE email = :email;";
+ 			$command = $connection->getPDO()->prepare($query);
+
+ 			$e = $obj->getEmail();
+ 			$command->bindParam("email", $e);
+
+ 			if ($command->execute()) {
+ 				$connection->closeConnection();
+ 				return true;
+ 			} else {
+ 				$connection->closeConnection();
+ 				return false;
+ 			}
+
+ 		} catch (PDOException $e) {
  			echo "Error: ${$e->getMessage()}";
  		}
  	}
