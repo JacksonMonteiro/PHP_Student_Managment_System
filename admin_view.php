@@ -23,18 +23,20 @@
 					$control = new AdminControl();
 					$data = $control->read();
 
-					foreach($data as $item) {
-						echo 
-						"
-							<tr>
-								<td>{$item->getUsername()}</td>
-								<td>{$item->getEmail()}</td>
-								<td>{$item->getGender()}</td>
-								<td>{$item->getRole()}</td>
-								<td><a href='#'>Editar</a></td>
-								<td><a href='delete_admin_form.php'>Remover</a></td>
-							</tr>
-						";
+					if ($data != null) {
+						foreach($data as $item) {
+							echo 
+							"
+								<tr>
+									<td>{$item->getUsername()}</td>
+									<td>{$item->getEmail()}</td>
+									<td>{$item->getGender()}</td>
+									<td>{$item->getRole()}</td>
+									<td><a href='update_admin_form.php?email={$item->getEmail()}'>Editar</a></td>
+									<td><a href='delete_admin_form.php'>Remover</a></td>
+								</tr>
+							";
+						}
 					}
 				?>
 			</tbody>

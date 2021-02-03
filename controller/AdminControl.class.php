@@ -81,6 +81,25 @@ class AdminControl {
  		}
  	}
 
+ 	public function readOne($email) {
+ 		try {
+ 			$connection = new Connection("./controller/database/config.ini");
+ 			$command = $connection->getPDO()->prepare("SELECT * FROM admin WHERE email = :email;");
+ 			$e = $email;
+ 			$command->bindParam("email", $e);
+ 			if ($command->execute()) {
+ 				$data = $command->fetch();
+ 				$connection->closeConnection();
+ 				return $data;
+ 			} else {
+ 				$connection->closeConnection();
+ 				return null;
+ 			}
+ 		} catch (PDOException $e) {
+ 			echo "Error {$e->getMessage()}";
+ 		}
+ 	}
+
  	public function delete($obj) {
  		try {
  			$connection = new Connection("./controller/database/config.ini");
