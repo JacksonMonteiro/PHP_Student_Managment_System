@@ -14,6 +14,8 @@
 					<th>E-mail: </th>
 					<th>Sexo: </th>
 					<th>Cargo: </th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,8 +34,8 @@
 									<td>{$item->getEmail()}</td>
 									<td>{$item->getGender()}</td>
 									<td>{$item->getRole()}</td>
-									<td><a href='update_admin_form.php?email={$item->getEmail()}'>Editar</a></td>
-									<td><a href='delete_admin_form.php'>Remover</a></td>
+									<td><a href='update_admin_form.php?email={$item->getEmail()}' class='update-link'>Editar</a></td>
+									<td><a href='delete_admin_form.php' class='delete-link'>Remover</a></td>
 								</tr>
 							";
 						}

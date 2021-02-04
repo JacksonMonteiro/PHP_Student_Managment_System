@@ -6,7 +6,7 @@ require_once("./model/Admin.class.php");
 $admin = new Admin();
 
 $admin->setUsername($_POST["username"]);
-$admin->setEmail($_POST["email"]);
+$admin->setEmail($_GET["email"]);
 $admin->setGender($_POST["gender"]);
 $admin->setRole($_POST["role"]);
 

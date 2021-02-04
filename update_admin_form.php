@@ -11,17 +11,19 @@
 			require_once("./controller/adminControl.class.php");
 			$control = new adminControl();
 			$data = $control->readOne($_GET["email"]);
+			$email = $_GET["email"];
 
 			if ($data != null) {
 				echo 
 				"
-					<form action='update_admin.php' method='POST'>
+					<form action='update_admin.php?email={$data['email']}' method='POST'>
+						<h1>Atualizar Usuário</h1>
 						<label for='username'>
 							Nome de usuário: <input type='text' value='{$data['username']}' id='username' name='username'>
 						</label>
 						<br>
 						<label for='email'>
-							Email: <input type='email' value='{$data['email']}' id='email' name='email'>
+							Email: <input type='email' value='{$data['email']}' id='email' name='email' disabled>
 						</label>
 						<br>
 						<label for='gender'>
@@ -32,8 +34,8 @@
 							Cargo: <input type='text' value='{$data['role']}' id='role' name='role'>
 						</label>
 						<br>
-						<input type='submit' value='Atualizar'>
-						<a href='./admin_view.php'>Voltar</a>
+						<input type='submit' value='Atualizar' class='update-btn'>
+						<a href='./admin_view.php' class='exit-btn'>Voltar</a>
 					</form>
 				";
 			}
