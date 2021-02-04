@@ -100,6 +100,35 @@ class AdminControl {
  		}
  	}
 
+ 	public function update($obj) {
+ 		try {
+ 			$connection = new Connection("./controller/database/config.ini");
+ 			$query = "UPDATE admin SET username=:u, gender=:g, role=:r WHERE email=:e;";
+ 			$command = $connection->getPDO()->prepare($query);
+
+ 			$u = $obj->getUsername();
+ 			$e = $obj->getEmail();
+ 			$g = $obj->getGender();
+ 			$r = $obj->getRole();
+
+
+ 			$command->bindParam("u", $u);
+			$command->bindParam("e", $e);
+ 			$command->bindParam("g", $g);
+			$command->bindParam("r", $r);
+
+ 			if ($command->execute()) {
+ 				$connection->closeConnection();
+ 				return true;
+ 			} else {
+ 				$connection->closeConnection();
+ 				return false;
+ 			}
+ 		} catch (PDOException $e) {
+ 			echo "Error: {$e->getMessage()}";
+ 		}
+ 	}
+
  	public function delete($obj) {
  		try {
  			$connection = new Connection("./controller/database/config.ini");
