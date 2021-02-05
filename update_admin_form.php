@@ -11,7 +11,6 @@
 			require_once("./controller/adminControl.class.php");
 			$control = new adminControl();
 			$data = $control->readOne($_GET["email"]);
-			$email = $_GET["email"];
 
 			if ($data != null) {
 				echo 
@@ -35,7 +34,7 @@
 						</label>
 						<br>
 						<input type='submit' value='Atualizar' class='update-btn'>
-						<a href='./admin_view.php' class='exit-btn'>Voltar</a>
+						<a href='./admin_view.php?email={$data['email']}' class='exit-btn'>Voltar</a>
 					</form>
 				";
 			}

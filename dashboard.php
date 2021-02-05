@@ -6,12 +6,36 @@
 	<title>SGE - Dashboard</title>
 </head>
 <body>
-	<nav>
-		<ul>
-			<li><a href="login_form.php" class="logout-btn">Logout</a></li>
-		</ul>
-	</nav>
+	<header>
+		<div>
+			<div>
+				Seja Bem-vindo, 
+				<?php
+					require_once("./controller/AdminControl.class.php");
+					$control = new AdminControl();
+					$data = $control->readOne($_GET["email"]);
+					echo "{$data['username']}";
+				?>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="login_form.php" class="logout-btn">Sair</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
-	<a href="./admin_view.php">Moderadores</a>
+	<main>
+		<?php  
+			echo "<a href='./admin_view.php?email={$data['email']}'>";
+		?>
+				<div class="card">
+					<img src="./view/assets/admin.svg" alt="Admin icon">	
+					<div class="card-container">
+						Moderadores
+					</div>	
+				</div>
+			</a>
+	</main>
 </body>	
 </html>

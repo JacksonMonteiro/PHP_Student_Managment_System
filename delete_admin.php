@@ -5,11 +5,12 @@ require_once("./model/Admin.class.php");
 
 $admin = new Admin();
 $admin->setEmail($_POST["email"]);
+$email = $_GET["email"];
 
 $control = new AdminControl();
 
 if ($control->delete($admin)) {
-	header ("Location: http://localhost/PHP_Student_Managment_System/admin_view.php");
+	header ("Location: http://localhost/PHP_Student_Managment_System/admin_view.php?email={$email}");
 } else {
 	echo "<h2>Error</h2>";
 }

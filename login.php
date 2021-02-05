@@ -11,7 +11,7 @@ if (isset($_POST["eml"]) && !empty($_POST["eml"]) && isset($_POST["pwd"]) && !em
 	$password = addslashes($_POST["pwd"]);
 
 	if ($control->login($email, $password) == true) {
-		header("Location: http://localhost/PHP_Student_Managment_System/dashboard.php");
+		header("Location: http://localhost/PHP_Student_Managment_System/dashboard.php?email={$email}");
 	} else {
 		header("Location: http://localhost/PHP_Student_Managment_System/login_form.php");
 	}

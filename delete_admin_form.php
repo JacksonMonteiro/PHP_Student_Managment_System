@@ -6,8 +6,16 @@
 	<title>SGE - Remover Moderador</title>
 </head>
 <body>
+	<?php
+		require_once('./controller/AdminControl.class.php');
+		$control = new AdminControl();
+		$data = $control->readOne($_GET["email"]);
+	?>
+
 	<main>
-		<form action="delete_admin.php" method="POST">
+		<?php  
+			echo "<form action='delete_admin.php?email={$data['email']}' method='POST'>";
+		?>
 			<h1>Deletar Moderador</h1>
 			<div>
 				<label for="email">
@@ -15,7 +23,9 @@
 				</label>
 				<br>
 				<input type="submit" value="Deletar" class="delete-btn"/>
-				<a href="./admin_view.php" class="exit-btn">Voltar</a>
+				<?php  
+					echo "<a href='./admin_view.php?email={$data['email']}' class='exit-btn'>Voltar</a>";
+				?>
 			</div>
 		</form>
 	</main>

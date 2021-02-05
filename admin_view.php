@@ -24,6 +24,7 @@
 
 					$control = new AdminControl();
 					$data = $control->read();
+					$newData = $control->readOne($_GET["email"]);
 
 					if ($data != null) {
 						foreach($data as $item) {
@@ -35,7 +36,7 @@
 									<td>{$item->getGender()}</td>
 									<td>{$item->getRole()}</td>
 									<td><a href='update_admin_form.php?email={$item->getEmail()}' class='update-link'>Editar</a></td>
-									<td><a href='delete_admin_form.php' class='delete-link'>Remover</a></td>
+									<td><a href='delete_admin_form.php?email={$newData['email']}' class='delete-link'>Remover</a></td>
 								</tr>
 							";
 						}
@@ -43,8 +44,13 @@
 				?>
 			</tbody>
 		</table>
-
-		<a href="./dashboard.php" class="exit-btn">Voltar</a>
+		<?php  
+			$data = $control->readOne($_GET["email"]);
+			echo "
+				<a href='./dashboard.php?email={$data['email']}' class='exit-btn'>Voltar</a>
+			";
+			exit;
+		?>
 	</main>
 </body>
 </html>
