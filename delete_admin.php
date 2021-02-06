@@ -10,7 +10,7 @@ $email = $_GET["email"];
 $control = new AdminControl();
 
 if ($control->delete($admin)) {
-	header ("Location: http://localhost/PHP_Student_Managment_System/admin_view.php?email={$email}");
+	header ("Location: http://localhost/PHP_Student_Managment_System/login_form.php");
 } else {
 	echo "<h2>Error</h2>";
 }

@@ -34,7 +34,8 @@
 						</label>
 						<br>
 						<input type='submit' value='Atualizar' class='update-btn'>
-						<a href='./admin_view.php?email={$data['email']}' class='exit-btn'>Voltar</a>
+						<a href='./delete_admin_form.php?email={$data['email']}' class='delete-btn'>Deletar</a>
+						<a href='./dashboard.php?email={$data['email']}' class='exit-btn'>Voltar</a>
 					</form>
 				";
 			}

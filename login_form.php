@@ -24,7 +24,7 @@
 			<br>
 			<input type="submit" value="Entrar" class="login-btn">
 			<br>
-			<a href="register_form.php" class="register-btn">Registrar-se</a>
+			<a href="register_form.php" class="register-btn">Cadastrar-se</a>
 			<a href="index.php" class="exit-btn">Sair</a>
 		</form>
 	</main>

@@ -17,6 +17,7 @@
 			echo "<form action='delete_admin.php?email={$data['email']}' method='POST'>";
 		?>
 			<h1>Deletar Moderador</h1>
+			<p>Confirme o seu email para concluir a desativação da sua conta</p>
 			<div>
 				<label for="email">
 				Email: <input type="email" id="email" name="email" required autofocus/>

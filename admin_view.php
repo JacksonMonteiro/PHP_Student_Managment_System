@@ -13,9 +13,7 @@
 					<th>Nome de usuário: </th> 
 					<th>E-mail: </th>
 					<th>Sexo: </th>
-					<th>Cargo: </th>
-					<th></th>
-					<th></th>
+					<th>Função: </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,9 +33,6 @@
 									<td>{$item->getEmail()}</td>
 									<td>{$item->getGender()}</td>
 									<td>{$item->getRole()}</td>
-									<td><a href='update_admin_form.php?email={$item->getEmail()}' class='update-link'>Editar</a></td>
-									<td><a href='delete_admin_form.php?email={$newData['email']}' class='delete-link'>Remover</a></td>
-								</tr>
 							";
 						}
 					}

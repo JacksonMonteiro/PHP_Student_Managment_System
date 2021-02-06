@@ -8,5 +8,15 @@ CREATE TABLE IF NOT EXISTS admin (
 	gender VARCHAR(1) NOT NULL,
 	role VARCHAR(25) NOT NULL,
 	password VARCHAR(25) NOT NULL,
-	PRIMARY KEY (email),
+	PRIMARY KEY (email)
 ); 
+
+
+CREATE TABLE IF NOT EXISTS coadmin {
+	username VARCHAR(25) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	gender VARCHAR(1) NOT NULL,
+	role VARCHAR(25) NOT NULL,
+	password VARCHAR(25) NOT NULL,
+	PRIMARY KEY (email)
+}

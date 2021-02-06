@@ -13,7 +13,7 @@ $admin->setRole($_POST["role"]);
 $control = new AdminControl();
 
 if ($control->update($admin)) {
-	header ("Location: http://localhost/PHP_Student_Managment_System/admin_view.php?email={$admin->getEmail()}");
+	header ("Location: http://localhost/PHP_Student_Managment_System/dashboard.php?email={$admin->getEmail()}");
 } else {
 	echo "<h2>Error</h2>";
 }

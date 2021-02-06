@@ -8,21 +8,24 @@
 <body>
 	<header>
 		<div>
-			<div>
-				Seja Bem-vindo, 
-				<?php
-					require_once("./controller/AdminControl.class.php");
-					$control = new AdminControl();
-					$data = $control->readOne($_GET["email"]);
-					echo "{$data['username']}";
-				?>
-			</div>
 			<nav>
-				<ul>
-					<li><a href="login_form.php" class="logout-btn">Sair</a></li>
-				</ul>
+				<div>
+					Seja Bem-vindo, 
+					<?php
+						require_once("./controller/AdminControl.class.php");
+						$control = new AdminControl();
+						$data = $control->readOne($_GET["email"]);
+						echo "{$data['username']}";
+					?>
+				</div>
+
+				<div>
+					<ul>
+						<?php echo "<li><a href='update_admin_form.php?email={$data['email']}'>Conta</a></li>" ?>
+						<li><a href="login_form.php" class="logout-btn">Sair</a></li>
+					</ul>
+				</div>
 			</nav>
-		</div>
 	</header>
 
 	<main>
@@ -32,7 +35,7 @@
 				<div class="card">
 					<img src="./view/assets/admin.svg" alt="Admin icon">	
 					<div class="card-container">
-						Moderadores
+						Administradores e Moderadores
 					</div>	
 				</div>
 			</a>

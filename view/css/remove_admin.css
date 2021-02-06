@@ -27,7 +27,14 @@ form {
 }
 
 form h1 {
-	margin: 40px auto;
+	margin: 40px auto 10px auto;
+}
+
+form p {
+	margin-top: 0;
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 30px;
 }
 
 form div {

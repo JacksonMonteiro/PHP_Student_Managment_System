@@ -15,7 +15,7 @@
                   <h1>Registrar-se</h1>
 			<label for="newUsername">
 				Nome de usuário: <br>
-				<input type="text" id="newUsername" name="nUsr" required placeholder="admin">
+				<input type="text" id="newUsername" name="nUsr" required placeholder="Admin">
 			</label>
 			<br>
 			<label for="newEmail">
@@ -41,7 +41,7 @@
             <br>
             <label for="newRole">
             	Cargo: <br>
-            	<input type="text" id="newRole" name="nRl" required placeholder="diretor">
+            	<input type="text" id="newRole" name="nRl" required placeholder="Administrador ou moderador">
             </label>
             <br>
             <label for="newPassword">
