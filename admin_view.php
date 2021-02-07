@@ -44,7 +44,6 @@
 			echo "
 				<a href='./dashboard.php?email={$data['email']}' class='exit-btn'>Voltar</a>
 			";
-			exit;
 		?>
 	</main>
 </body>

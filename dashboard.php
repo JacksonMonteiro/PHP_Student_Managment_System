@@ -39,6 +39,17 @@
 					</div>	
 				</div>
 			</a>
+
+		<?php  
+			echo "<a href='./student_view.php?email={$data['email']}'>";
+		?>
+				<div class="card">
+					<img src="./view/assets/admin.svg" alt="Admin icon">	
+					<div class="card-container">
+						Alunos
+					</div>	
+				</div>
+			</a>
 	</main>
 </body>	
 </html>
