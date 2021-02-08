@@ -5,7 +5,6 @@ require_once("./model/Admin.class.php");
 
 $admin = new Admin();
 $admin->setEmail($_POST["email"]);
-$email = $_GET["email"];
 
 $control = new AdminControl();
 

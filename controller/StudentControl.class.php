@@ -51,6 +51,26 @@ class StudentControl {
 			echo "Error: {$e->getMessage()}";
 		}
 	}
+
+	public function delete($obj) {
+		try {
+			$connection = new Connection('./controller/database/config.ini');
+			$command = $connection->getPDO()->prepare("DELETE FROM student WHERE email = :email;");
+
+			$email = $obj->getEmail();
+			$command->bindParam("email", $email);
+
+			if ($command->execute()) {
+				$connection->closeConnection();
+				return true;
+			} else {
+				$connection->closeConnection();
+				return false;
+			}
+		} catch (PDOException $e) {
+			echo "Error: {$e->getMessage()}";
+		}
+	}
 }
 
 ?>

@@ -102,3 +102,7 @@ main a {
 	width: 100%;
 	display: block;
 }
+
+.green-bckg {
+	background: var(--green);
+}
