@@ -10,10 +10,11 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Nome de usuário: </th> 
+					<th>Nome: </th> 
 					<th>E-mail: </th>
 					<th>Sexo: </th>
-					<th>Função: </th>
+					<th>Curso: </th>
+					<th></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -37,6 +38,7 @@
 									<td>{$item->getGender()}</td>
 									<td>{$item->getCourse()}</td>
 									<td><a href='delete_student_form.php?email={$admData['email']}'>Deletar</a></td>
+									<td><a href='update_student_form.php?email={$admData['email']}&studentEmail={$item->getEmail()}'>Editar</a></td>
 							";
 						}
 					}

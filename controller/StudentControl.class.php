@@ -52,6 +52,51 @@ class StudentControl {
 		}
 	}
 
+	public function readOne($email) {
+		try {
+			$connection = new Connection('./controller/database/config.ini');
+			$command = $connection->getPDO()->prepare("SELECT * FROM student WHERE email = :email;");
+			$command->bindParam("email", $email);
+			if ($command->execute()) {
+				$data = $command->fetch();
+				$connection->closeConnection();
+				return $data;
+			} else {
+				$connection->closeConnection();
+				return null;
+			}
+		} catch (PDOException $e) {
+			echo "Error: {$e->getMessage()}";
+		}
+	}
+
+	public function update($obj) {
+		try {
+			$connection = new Connection('./controller/database/config.ini');
+			$command = $connection->getPDO()->prepare("UPDATE student SET name = :name, gender = :gender, course = :course WHERE email = :email");
+
+			$name = $obj->getName();
+			$gender = $obj->getGender();
+			$course = $obj->getCourse();
+			$email = $obj->getEmail();
+
+			$command->bindParam("name", $name);
+			$command->bindParam("gender", $gender);
+			$command->bindParam("course", $course);
+			$command->bindParam("email", $email);
+
+			if ($command->execute()) {
+				$connection->closeConnection();
+				return true;
+			} else {
+				$connection->closeConnection();
+				return false;
+			}
+		} catch (PDOException $e) {
+			echo "Error: {$e->getMessage()}";
+		}
+	}
+
 	public function delete($obj) {
 		try {
 			$connection = new Connection('./controller/database/config.ini');
