@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./view/css/remove_admin.css" />
-	<title>SGE - Remover Moderador</title>
+	<title>SGE - Remover Administrador ou Moderador</title>
 </head>
 <body>
 	<?php

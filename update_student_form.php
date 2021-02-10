@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./view/css/update_student.css"/>
-	<title>SGE - Atualizar Moderador</title>
+	<title>SGE - Atualizar Estudante</title>
 </head>
 <body>
 	<main>

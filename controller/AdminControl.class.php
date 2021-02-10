@@ -1,36 +1,40 @@
 <?php 
 
-// Import the Connection and the Admin model files
+// Import the Connection class and the Admin model files
 require_once('controller/database/Connection.class.php');
 require_once('model/Admin.class.php');
+
+//Global variable		
+$connection = new Connection("./controller/database/config.ini");
 
 class AdminControl {
 	// Create register on database
 	public function create($obj) {
 		try {
-			$connection = new Connection("./controller/database/config.ini");
-			$query = "INSERT INTO admin VALUES (:u, :e, :g, :r, :p);";
-			$command = $connection->getPDO()->prepare($query);
+			if (get_class($obj) === "Admin") {
+				global $connection;
+				$command = $connection->getPDO()->prepare("INSERT INTO admin VALUES (:u, :e, :g, :r, :p);");
 
-			$usr = $obj->getUsername();
-			$eml = $obj->getEmail();
-			$gnd  = $obj->getGender();
-			$rl = $obj->getRole();
-			$pwd = $obj->getPassword();
+				$usr = $obj->getUsername();
+				$eml = $obj->getEmail();
+				$gnd  = $obj->getGender();
+				$rl = $obj->getRole();
+				$pwd = $obj->getPassword();
 
-			$command->bindParam("u", $usr);
-			$command->bindParam("e", $eml);
-			$command->bindParam("g", $gnd);
-			$command->bindParam("r", $rl);
-			$command->bindValue("p", sha1($pwd));
+				$command->bindParam("u", $usr);
+				$command->bindParam("e", $eml);
+				$command->bindParam("g", $gnd);
+				$command->bindParam("r", $rl);
+				$command->bindParam("p", sha1($pwd));
 
 
-			if ($command->execute()) {
-				$connection->closeConnection();
-				return true;
-			} else {
-				$connection->closeConnection();
-				return false;
+				if ($command->execute()) {
+					$connection->closeConnection();
+					return true;
+				} else {
+					$connection->closeConnection();
+					return false;
+				}
 			}
 
 		} catch (PDOException $e) {
@@ -38,9 +42,10 @@ class AdminControl {
 		}
 	}
 
+	// Login action using email and password
 	public function login($email, $pass) {
 		try {
-			$connection = new Connection("./controller/database/config.ini");
+			global $connection;
 			$command = $connection->getPDO()->prepare("SELECT * FROM admin WHERE email = :email AND password = :pass;");
 
 			$e = $email;
@@ -51,7 +56,7 @@ class AdminControl {
 			
 			if ($command->execute()) {
 				$data = $command->fetch();
-				if ($e === $data["email"] && $p === $data["password"]) {
+				if ($e === $data["email"] and $p === $data["password"]) {
 					$connection->closeConnection();
 					return true;
 				}
@@ -64,9 +69,10 @@ class AdminControl {
 		}
  	}
 
+ 	// Read action to collect all data from admins table
  	public function read() {
  		try {
- 			$connection = new Connection("./controller/database/config.ini");
+ 			global $connection;
  			$command = $connection->getPDO()->prepare("SELECT * FROM admin;");
  			if ($command->execute()) {
  				$data = $command->fetchAll(PDO::FETCH_CLASS, "Admin");
@@ -81,9 +87,10 @@ class AdminControl {
  		}
  	}
 
+ 	// Select One action to collect only one register of admins table
  	public function readOne($email) {
  		try {
- 			$connection = new Connection("./controller/database/config.ini");
+ 			global $connection;
  			$command = $connection->getPDO()->prepare("SELECT * FROM admin WHERE email = :email;");
  			$e = $email;
  			$command->bindParam("email", $e);
@@ -100,52 +107,55 @@ class AdminControl {
  		}
  	}
 
+ 	// Update data from one specific register of admins table
  	public function update($obj) {
  		try {
- 			$connection = new Connection("./controller/database/config.ini");
- 			$query = "UPDATE admin SET username=:u, gender=:g, role=:r WHERE email=:e;";
- 			$command = $connection->getPDO()->prepare($query);
+ 			if (get_class($obj) === "Admin") {
+ 				global $connection;
+	 			$command = $connection->getPDO()->prepare("UPDATE admin SET username=:u, gender=:g, role=:r WHERE email=:e;");
 
- 			$u = $obj->getUsername();
- 			$e = $obj->getEmail();
- 			$g = $obj->getGender();
- 			$r = $obj->getRole();
+	 			$u = $obj->getUsername();
+	 			$e = $obj->getEmail();
+	 			$g = $obj->getGender();
+	 			$r = $obj->getRole();
 
 
- 			$command->bindParam("u", $u);
-			$command->bindParam("e", $e);
- 			$command->bindParam("g", $g);
-			$command->bindParam("r", $r);
+	 			$command->bindParam("u", $u);
+				$command->bindParam("e", $e);
+	 			$command->bindParam("g", $g);
+				$command->bindParam("r", $r);
 
- 			if ($command->execute()) {
- 				$connection->closeConnection();
- 				return true;
- 			} else {
- 				$connection->closeConnection();
- 				return false;
+	 			if ($command->execute()) {
+	 				$connection->closeConnection();
+	 				return true;
+	 			} else {
+	 				$connection->closeConnection();
+	 				return false;
+	 			}
  			}
  		} catch (PDOException $e) {
  			echo "Error: {$e->getMessage()}";
  		}
  	}
 
+ 	// Delete one admin register from table
  	public function delete($obj) {
  		try {
- 			$connection = new Connection("./controller/database/config.ini");
- 			$query = "DELETE FROM admin WHERE email = :email;";
- 			$command = $connection->getPDO()->prepare($query);
+ 			if (get_class($obj) === "Admin") {
+ 				global $connection;
+	 			$command = $connection->getPDO()->prepare("DELETE FROM admin WHERE email = :email;");
 
- 			$e = $obj->getEmail();
- 			$command->bindParam("email", $e);
+	 			$e = $obj->getEmail();
+	 			$command->bindParam("email", $e);
 
- 			if ($command->execute()) {
- 				$connection->closeConnection();
- 				return true;
- 			} else {
- 				$connection->closeConnection();
- 				return false;
+	 			if ($command->execute()) {
+	 				$connection->closeConnection();
+	 				return true;
+	 			} else {
+	 				$connection->closeConnection();
+	 				return false;
+	 			}
  			}
-
  		} catch (PDOException $e) {
  			echo "Error: ${$e->getMessage()}";
  		}

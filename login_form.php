@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./view/css/login.css">
-	<title>Login</title>
+	<title>SGE - Login</title>
 </head>
 <body>
 	<div class="orange_vector"></div>

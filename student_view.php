@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./view/css/student.css" />
-	<title>SGE - Moderadores</title>
+	<title>SGE - Alunos</title>
 </head>
 <body>
 	<main>

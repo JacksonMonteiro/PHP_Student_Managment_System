@@ -1,7 +1,8 @@
 <?php 
 
+// Admin model class
 class Admin {
-
+	// Attributes
 	private $username;
 	private $email;
 	private $gender;
@@ -9,7 +10,6 @@ class Admin {
 	private $password;
 
 	// Getters
-
 	public function getUsername() {
 		return $this->username;
 	}
@@ -31,7 +31,6 @@ class Admin {
 	}
 
 	// Setters
-
 	public function setUsername($usr) {
 		$this->username = $usr;
 	}

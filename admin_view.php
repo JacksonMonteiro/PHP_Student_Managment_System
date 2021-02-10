@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./view/css/admin.css" />
-	<title>SGE - Moderadores</title>
+	<title>SGE - Administradores e Moderadores</title>
 </head>
 <body>
 	<main>

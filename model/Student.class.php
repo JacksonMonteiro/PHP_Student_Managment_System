@@ -1,12 +1,14 @@
 <?php
 
+// Student model class
 class Student {
-
+	// Attributes
 	private $name;
 	private $email;
 	private $gender;
 	private $course;
 
+	// Getters
 	public function getName() {
 		return $this->name;
 	}
@@ -23,6 +25,7 @@ class Student {
 		return $this->course;
 	}
 
+	// Setters
 	public function setName($name) {
 		$this->name = $name;
 	}
