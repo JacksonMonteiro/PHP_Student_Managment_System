@@ -6,11 +6,18 @@ require_once("./model/Student.class.php");
 $student = new Student();
 $control = new StudentControl();
 
+function dataValidation($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	$student->setName($_POST["name"]);
-	$student->setEmail($_GET["studentEmail"]);
-	$student->setGender($_POST["gender"]);
-	$student->setCourse($_POST["course"]);
+	$student->setName(dataValidation($_POST["name"]));
+	$student->setEmail(dataValidation($_GET["studentEmail"]));
+	$student->setGender(dataValidation($_POST["gender"]));
+	$student->setCourse(dataValidation($_POST["course"]));
 
 	$admEmail = $_GET["email"];
 
