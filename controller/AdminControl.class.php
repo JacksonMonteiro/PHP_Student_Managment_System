@@ -90,7 +90,7 @@ class AdminControl {
  	// Select One action to collect only one register of admins table
  	public function readOne($email) {
  		try {
- 			global $connection;
+ 			$connection = new Connection('./controller/database/config.ini');
  			$command = $connection->getPDO()->prepare("SELECT * FROM admin WHERE email = :email;");
  			$e = $email;
  			$command->bindParam("email", $e);

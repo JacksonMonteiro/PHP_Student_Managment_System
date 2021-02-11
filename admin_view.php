@@ -22,7 +22,6 @@
 
 					$control = new AdminControl();
 					$data = $control->read();
-					$newData = $control->readOne($_GET["email"]);
 
 					if ($data != null) {
 						foreach($data as $item) {
@@ -39,10 +38,12 @@
 				?>
 			</tbody>
 		</table>
+		
 		<?php  
-			$data = $control->readOne($_GET["email"]);
+			
+			$newData = $control->readOne($_GET["email"]);
 			echo "
-				<a href='./dashboard.php?email={$data['email']}' class='exit-btn'>Voltar</a>
+				<a href='./dashboard.php?email={$newData['email']}' class='exit-btn'>Voltar</a>
 			";
 		?>
 	</main>
