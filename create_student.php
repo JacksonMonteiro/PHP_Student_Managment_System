@@ -19,8 +19,14 @@ function dataValidation($data) {
 // Check the server request method
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	// Set the attribute values
-	$student->setName(dataValidation($_POST["nUsr"]));
-	$student->setEmail(dataValidation($_POST["nEml"]));
+	if (preg_match("/^[a-zA-Z' ]*$/", $_POST["nUsr"])) {
+		$student->setName(dataValidation($_POST["nUsr"]));
+	}
+
+	if (filter_var($_POST["nEml"], FILTER_VALIDATE_EMAIL)) {
+		$student->setEmail(dataValidation($_POST["nEml"]));
+	}
+
 	$student->setGender(dataValidation($_POST["gender"]));
 	$student->setCourse(dataValidation($_POST["nRl"]));
 	

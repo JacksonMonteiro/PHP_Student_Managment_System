@@ -19,8 +19,13 @@ function dataValidation($data) {
 // Check the server request method
 if ($_SERVER["REQUEST_METHOD"] === "POST"){ 
 	// Set the attribute values
-	$student->setEmail(dataValidation($_POST["email"]));
-	$email = dataValidation($_GET["email"]);
+	if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+		$student->setEmail(dataValidation($_POST["email"]));
+	}
+
+	if (filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)) {
+		$email = dataValidation($_GET["email"]);
+	}
 
 	// Send to student view page if the delete student method is true
 	if ($control->delete($student)) {

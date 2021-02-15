@@ -19,10 +19,12 @@ function dataValidation($data) {
 // Check the server request method
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	// Set the attribute values
-	$admin->setEmail(dataValidation($_POST["email"]));
+	if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+		$admin->setEmail(dataValidation($_POST["email"]));
+	}
 
 	// Send to login form page if the delete admin method is true
-	if ($control->delete($Admin)) {
+	if ($control->delete($admin)) {
 		header ("Location: http://localhost/PHP_Student_Managment_System/login_form.php");
 	} else {
 		echo "<h2>Error</h2>";

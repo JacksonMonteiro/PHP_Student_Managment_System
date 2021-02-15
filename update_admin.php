@@ -20,8 +20,14 @@ function dataValidation($data) {
 // Check the server request method
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	// Set the attribute values
-	$admin->setUsername(dataValidation($_POST["username"]));
-	$admin->setEmail(dataValidation($_GET["email"]));
+	if (preg_match("/^[a-zA-Z' ]*$/")) {
+		$admin->setUsername(dataValidation($_POST["username"]));
+	}
+
+	if (filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)) {
+		$admin->setEmail(dataValidation($_GET["email"]));
+	}
+
 	$admin->setGender(dataValidation($_POST["gender"]));
 	$admin->setRole(dataValidation($_POST["role"]));
 

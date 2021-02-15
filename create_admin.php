@@ -19,8 +19,15 @@ function dataValidation($data) {
 // Check the server request method
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	// Set the attribute values
-	$admin->setUsername(dataValidation($_POST["nUsr"]));
-	$admin->setEmail(dataValidation($_POST["nEml"]));
+	
+	if (preg_match("/^[a-zA-Z' ]*$/", $_POST["nUsr"])) {
+		$admin->setUsername(dataValidation($_POST["nUsr"]));
+	}
+
+	if (filter_var($_POST["nEml"], FILTER_VALIDATE_EMAIL)) {
+		$admin->setEmail(dataValidation($_POST["nEml"]));
+	}
+	
 	$admin->setGender(dataValidation($_POST["gender"]));
 	$admin->setRole(dataValidation($_POST["nRl"]));
 	$admin->setPassword(dataValidation($_POST["nPwd"]));

@@ -19,11 +19,20 @@ function dataValidation($data) {
 // Check the server request method
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	// Set the attribute values
-	$student->setName(dataValidation($_POST["name"]));
-	$student->setEmail(dataValidation($_GET["studentEmail"]));
+	if (preg_match("/^[a-zA-Z' ]*$/", $_POST["name"])) {
+		$student->setName(dataValidation($_POST["name"]));
+	}
+
+	if (filter_var($_GET["studentEmail"], FILTER_VALIDATE_EMAIL)) {
+		$student->setEmail(dataValidation($_GET["studentEmail"]));
+	}
 	$student->setGender(dataValidation($_POST["gender"]));
 	$student->setCourse(dataValidation($_POST["course"]));
-	$admEmail = $_GET["email"];
+	
+	if (filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)) {
+		$admEmail = $_GET["email"];
+	}
+
 
 	// Send to student view page if the update student method is true
 	if ($control->update($student)) {
