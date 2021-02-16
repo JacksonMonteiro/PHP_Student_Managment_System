@@ -1,3 +1,7 @@
+<?php  
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +45,9 @@
 		
 		<?php  
 			
-			$newData = $control->readOne($_GET["email"]);
+			$newData = $control->readOne($_SESSION["email"]);
 			echo "
-				<a href='./dashboard.php?email={$newData['email']}' class='exit-btn'>Voltar</a>
+				<a href='./dashboard.php' class='exit-btn'>Voltar</a>
 			";
 		?>
 	</main>

@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	// Send to dashboard page if the update admin method is true
 	if ($control->update($admin)) {
-		header ("Location: http://localhost/PHP_Student_Managment_System/dashboard.php?email={$admin->getEmail()}");
+		header ("Location: http://localhost/PHP_Student_Managment_System/dashboard.php");
 	} else {
 		echo "<h2>Error</h2>";
 	}

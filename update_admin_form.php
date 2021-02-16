@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,7 @@
 			<?php
 			require_once("./controller/adminControl.class.php");
 			$control = new adminControl();
-			$data = $control->readOne($_GET["email"]);
+			$data = $control->readOne($_SESSION["email"]);
 
 			if ($data != null) {
 				echo 
@@ -34,8 +38,8 @@
 						</label>
 						<br>
 						<input type='submit' value='Atualizar' class='update-btn'>
-						<a href='./delete_admin_form.php?email={$data['email']}' class='delete-btn'>Deletar</a>
-						<a href='./dashboard.php?email={$data['email']}' class='exit-btn'>Voltar</a>
+						<a href='./delete_admin_form.php' class='delete-btn'>Deletar</a>
+						<a href='./dashboard.php' class='exit-btn'>Voltar</a>
 					</form>
 				";
 			}

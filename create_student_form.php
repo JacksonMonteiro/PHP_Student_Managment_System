@@ -1,3 +1,7 @@
+<?php  
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +14,9 @@
 		<?php
             require_once('./controller/AdminControl.class.php');
             $admControl = new AdminControl();
-            $data = $admControl->readOne($_GET["email"]);
+            $data = $admControl->readOne($_SESSION["email"]);
             echo 
-            "<form action='create_student.php?email={$data['email']}' method='POST'>
+            "<form action='create_student.php' method='POST'>
             "; ?>
                   <h1>Cadastrar aluno</h1>
 			<label for="newUsername">
@@ -48,7 +52,7 @@
             <br>
             <div class="flex">
                   <input type="submit" value="Registrar-se" class="register-btn">
-                  <a href="login_form.php" class="back-btn">Voltar</a>
+                  <a href="student_view.php" class="back-btn">Voltar</a>
             </div>
 		</form>
 	</main>

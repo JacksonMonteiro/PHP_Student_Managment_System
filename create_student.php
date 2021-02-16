@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Import StudentControl and Student Model classes
 require_once('./controller/StudentControl.class.php');
@@ -30,9 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	$student->setGender(dataValidation($_POST["gender"]));
 	$student->setCourse(dataValidation($_POST["nRl"]));
 	
+	$_SESSION["studentEmail"] = $student->getEmail();
+
 	// Send to student view page if the create student method is true
 	if ($control->create($student)) {
-		header ("Location: http://localhost/PHP_Student_Managment_System/student_view.php?email={$_GET["email"]}");
+		header ("Location: http://localhost/PHP_Student_Managment_System/student_view.php");
 	} else {
 		echo "<h2>Error</h2>";
 	}

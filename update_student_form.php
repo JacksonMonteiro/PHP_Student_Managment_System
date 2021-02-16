@@ -1,4 +1,8 @@
- <!DOCTYPE html>
+<?php  
+session_start();
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,16 +14,16 @@
 			<?php
 			require_once("./controller/StudentControl.class.php");
 			$control = new StudentControl();
-			$data = $control->readOne($_GET["studentEmail"]);
+			$data = $control->readOne($_SESSION["studentEmail"]);
 
 			require_once("./controller/AdminControl.class.php");
 			$admControl = new AdminControl();
-			$admData = $admControl->readOne($_GET["email"]);
+			$admData = $admControl->readOne($_SESSION["email"]);
 
 			if ($data != null) {
 				echo 
 				"
-					<form action='update_student.php?email={$admData['email']}&studentEmail={$data['email']}' method='POST'>
+					<form action='update_student.php' method='POST'>
 						<h1>Atualizar Estudante</h1>
 						<label for='name'>
 							Nome de usuário: <input type='text' value='{$data['name']}' id='name' name='name'>
@@ -39,7 +43,7 @@
 						<br>
 						<input type='submit' value='Atualizar' class='update-btn'>
 
-						<a href='./student_view.php?email={$admData['email']}' class='exit-btn'>Voltar</a>
+						<a href='./student_view.php' class='exit-btn'>Voltar</a>
 					</form>
 				";
 			}

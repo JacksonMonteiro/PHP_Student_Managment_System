@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Import StudentControl and Student Model classes
 require_once("./controller/StudentControl.class.php");
@@ -24,19 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	}
 
 	if (filter_var($_GET["studentEmail"], FILTER_VALIDATE_EMAIL)) {
-		$student->setEmail(dataValidation($_GET["studentEmail"]));
+		$student->setEmail(dataValidation($_SESSION["studentEmail"]));
 	}
 	$student->setGender(dataValidation($_POST["gender"]));
 	$student->setCourse(dataValidation($_POST["course"]));
-	
-	if (filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)) {
-		$admEmail = $_GET["email"];
-	}
-
 
 	// Send to student view page if the update student method is true
 	if ($control->update($student)) {
-		header ("Location: http://localhost/PHP_Student_Managment_System/student_view.php?email={$admEmail}");
+		header ("Location: http://localhost/PHP_Student_Managment_System/student_view.php");
 	} else {
 		echo "<h2>Error</h2>";
 	}

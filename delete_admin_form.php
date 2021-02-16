@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +13,7 @@
 	<?php
 		require_once('./controller/AdminControl.class.php');
 		$control = new AdminControl();
-		$data = $control->readOne($_GET["email"]);
+		$data = $control->readOne($_SESSION["email"]);
 	?>
 
 	<main>
@@ -25,7 +29,7 @@
 				<br>
 				<input type="submit" value="Deletar" class="delete-btn"/>
 				<?php  
-					echo "<a href='./admin_view.php?email={$data['email']}' class='exit-btn'>Voltar</a>";
+					echo "<a href='./update_admin_form.php' class='exit-btn'>Voltar</a>";
 				?>
 			</div>
 		</form>

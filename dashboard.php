@@ -1,3 +1,7 @@
+<?php  
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +18,14 @@
 					<?php
 						require_once("./controller/AdminControl.class.php");
 						$control = new AdminControl();
-						$data = $control->readOne($_GET["email"]);
+						$data = $control->readOne($_SESSION["email"]);
 						echo "{$data['username']}";
 					?>
 				</div>
 
 				<div>
 					<ul>
-						<?php echo "<li><a href='update_admin_form.php?email={$data['email']}'>Conta</a></li>" ?>
+						<?php echo "<li><a href='update_admin_form.php'>Conta</a></li>" ?>
 						<li><a href="login_form.php" class="logout-btn">Sair</a></li>
 					</ul>
 				</div>
@@ -30,7 +34,7 @@
 
 	<main>
 		<?php  
-			echo "<a href='./admin_view.php?email={$data['email']}'>";
+			echo "<a href='./admin_view.php'>";
 		?>
 				<div class="card">
 					<img src="./view/assets/admin.svg" alt="Admin icon">	
@@ -41,7 +45,7 @@
 			</a>
 
 		<?php  
-			echo "<a href='./student_view.php?email={$data['email']}'>";
+			echo "<a href='./student_view.php'>";
 		?>
 				<div class="card green-bckg">
 					<img src="./view/assets/student.svg" alt="Admin icon">	

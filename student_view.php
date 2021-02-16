@@ -1,3 +1,7 @@
+<?php  
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +26,7 @@
 				<?php
 					require_once("./controller/AdminControl.class.php");
 					$admControl = new AdminControl();
-					$admData = $admControl->readOne($_GET["email"]);
+					$admData = $admControl->readOne($_SESSION["email"]);
 
 					require_once("./controller/StudentControl.class.php");
 					$control = new StudentControl();
@@ -37,8 +41,8 @@
 									<td>{$item->getEmail()}</td>
 									<td>{$item->getGender()}</td>
 									<td>{$item->getCourse()}</td>
-									<td><a href='delete_student_form.php?email={$admData['email']}'>Deletar</a></td>
-									<td><a href='update_student_form.php?email={$admData['email']}&studentEmail={$item->getEmail()}'>Editar</a></td>
+									<td><a href='delete_student_form.php'>Deletar</a></td>
+									<td><a href='update_student_form.php'>Editar</a></td>
 							";
 						}
 					}
@@ -49,8 +53,8 @@
 		<?php  
 			echo "
 				<div class='btns'>
-					<a href='./create_student_form.php?email={$admData['email']}' class='register-btn'>Cadastrar Aluno</a>
-					<a href='./dashboard.php?email={$admData['email']}' class='exit-btn'>Voltar</a>
+					<a href='./create_student_form.php' class='register-btn'>Cadastrar Aluno</a>
+					<a href='./dashboard.php' class='exit-btn'>Voltar</a>
 				</div>
 			";
 		?>

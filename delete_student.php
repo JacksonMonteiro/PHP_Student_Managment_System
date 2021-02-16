@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
 	// Send to student view page if the delete student method is true
 	if ($control->delete($student)) {
-		header ("Location: http://localhost/PHP_Student_Managment_System/student_view.php?email={$email}");
+		header ("Location: http://localhost/PHP_Student_Managment_System/student_view.php");
 	} else {
 		echo "<h2>Error</h2>";
 	}

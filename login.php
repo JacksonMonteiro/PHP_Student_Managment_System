@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 if (isset($_POST["eml"]) && !empty($_POST["eml"]) && isset($_POST["pwd"]) && !empty($_POST["pwd"])) {
 
@@ -10,8 +11,10 @@ if (isset($_POST["eml"]) && !empty($_POST["eml"]) && isset($_POST["pwd"]) && !em
 	$email = addslashes($_POST["eml"]);
 	$password = addslashes($_POST["pwd"]);
 
+	$_SESSION["email"] = $email;
+
 	if ($control->login($email, $password) == true) {
-		header("Location: http://localhost/PHP_Student_Managment_System/dashboard.php?email={$email}");
+		header("Location: http://localhost/PHP_Student_Managment_System/dashboard.php");
 	} else {
 		header("Location: http://localhost/PHP_Student_Managment_System/login_form.php");
 	}

@@ -1,3 +1,7 @@
+<?php  
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +13,7 @@
 	<?php
 		require_once('./controller/AdminControl.class.php');
 		$control = new AdminControl();
-		$data = $control->readOne($_GET["email"]);
+		$data = $control->readOne($_SESSION["email"]);
 	?>
 
 	<main>
